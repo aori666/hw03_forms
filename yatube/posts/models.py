@@ -29,7 +29,6 @@ class Post(models.Model):
         related_name='post_group'
     )
 
-
     class Meta:
         ordering = ['-pub_date']
 

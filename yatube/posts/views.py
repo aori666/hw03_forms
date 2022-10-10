@@ -21,7 +21,7 @@ def paginator_func(request, post_list, max_posts=max_posts):
 def index(request):
     post_list = Post.objects.all()
 
-    context = {'page_obj': paginator_func(request, post_list),}
+    context = {'page_obj': paginator_func(request, post_list), }
     return render(request, 'posts/index.html', context)
 
 
@@ -61,7 +61,7 @@ def post_detail(request, post_id):
 def post_create(request):
     form = PostForm(request.POST or None)
     if not form.is_valid():
-        return render(request, 'posts/create_post.html', {'form': form,})
+        return render(request, 'posts/create_post.html', {'form': form, })
     post = form.save(commit=False)
     post.author = request.user
     post.save()
