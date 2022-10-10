@@ -7,4 +7,4 @@ class PostForm(ModelForm):
         model = Post
         labels = {'text': 'Сообщение поста', 'group': 'Группа'}
         help_texts = {'text': 'Введите текст', 'group': 'Выберите группу'}
-        fields = {'text', 'group'}
+        fields = ('text', 'group')
