@@ -42,6 +42,7 @@ def profile(request, username):
 
     context = {
         'author': author,
+        'post_list': post_list,
         'page_obj': paginator_func(request, post_list),
     }
     return render(request, 'posts/profile.html', context)

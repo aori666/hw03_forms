@@ -6,7 +6,7 @@
             <div class="card-header">
                 {% if view_name == 'users:password_change_form' %}
                     Изменить пароль
-                {% elif view_name == 'users:password_reset_form' %}
+                {% elif view_name == 'users:password_reset_confirm' %}
                     Восстановить пароль через email
                 {% elif view_name == 'posts:post_create' %}
                     Добавить запись
@@ -53,7 +53,7 @@
                         <button type="submit" class="btn btn-primary">
                             {% if view_name == 'users:password_change_form' %}
                                 Изменить пароль
-                            {% elif view_name == 'users:password_reset_form' %}
+                            {% elif view_name == 'users:password_reset_confirm' %}
                                 Восстановить
                             {% elif view_name == 'posts:post_create' %}
                                 Добавить
