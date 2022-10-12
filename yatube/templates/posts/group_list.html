@@ -3,19 +3,9 @@
 {% block content %}
     <h1>{{ group.title }}</h1>
     <p>{{ group.description }}</p> 
+
     {% for post in page_obj %}
-        <article>
-            <ul>
-                <li>
-                    Автор: {{ post.author.get_full_name }}
-                </li>
-                <li>
-                    Дата публикации: {{ post.pub_date|date:"d E Y" }}
-                </li>
-            </ul>
-        </article>
-        <p>{{ post.text }}</p>   
-        {% if not forloop.last %}<hr>{% endif %}
+        {% include 'includes/include_for_post.html'%}
     {% endfor %}
 
     {% include 'posts/includes/paginator.html'%}

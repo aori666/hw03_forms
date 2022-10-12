@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+max_posts = 10
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.getenv('SECRET_KEY')
@@ -12,9 +14,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-#  подключаем движок filebased.EmailBackend
+# Настройки отправки писем для восстановления пароля через email
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-# указываем директорию, в которую будут складываться файлы писем
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
 
 LOGIN_URL = 'users:login'

@@ -18,11 +18,7 @@
                 
                 {% include 'includes/form_errors.html' %}
 
-                <form method="post"
-                    {% if action_url %}
-                        action="{% url view_name %}"
-                    {% endif %}
-                >
+                <form method="post">
                     {% csrf_token %}
 
                     {% for field in form %}
