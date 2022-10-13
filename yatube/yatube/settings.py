@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-max_posts = 10
+MAX_POSTS = 10
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 

@@ -1,65 +1,66 @@
 {% load user_filters %}
 <div class="row justify-content-center">
-    <div class="col-md-8 p-5">
-      <div class="card">
-        {% with request.resolver_match.view_name as view_name %}
-            <div class="card-header">
-                {% if view_name == 'users:password_change_form' %}
-                    Изменить пароль
-                {% elif view_name == 'users:password_reset_confirm' %}
-                    Восстановить пароль через email
-                {% elif view_name == 'posts:post_create' %}
-                    Добавить запись
-                {% elif view_name == 'posts:post_edit' %}
-                    Редактировать запись
-                {% endif %}
-            </div>
-            <div class="card-body">
+  <div class="col-md-8 p-5">
+    <div class="card">
+      {% with request.resolver_match.view_name as view_name %}
+        <div class="card-header">
+          {% if view_name == 'users:password_change_form' %}
+            Изменить пароль
+          {% elif view_name == 'users:password_reset_confirm' or view_name == 'users:password_reset_form' %}
+            Восстановить пароль через email
+          {% elif view_name == 'posts:post_create' %}
+            Добавить запись
+          {% elif view_name == 'posts:post_edit' %}
+            Редактировать запись
+          {% endif %}
+        </div>
+         <div class="card-body">
                 
-                {% include 'includes/form_errors.html' %}
+          {% include 'includes/form_errors.html' %}
 
-                <form method="post">
-                    {% csrf_token %}
+            <form method="post">
+              {% csrf_token %}
 
-                    {% for field in form %}
-                        <div class="form-group row my-3"
-                            {% if field.field.required %} 
-                            aria-required="true"
-                            {% else %}
-                            aria-required="false"
-                            {% endif %}
-                        >
-                        <label for="{{ field.id_for_label }}">
-                            {{ field.label }}
-                                {% if field.field.required %}
-                                    <span class="required text-danger">*</span>
-                                {% endif %}
-                        </label>
-                        <div>
-                            {{ field|addclass:'form-control' }}
-                            {% if field.help_text %}
-                                <small id="{{ field.id_for_label }}-help" class="form-text text-muted">
-                                    {{ field.help_text|safe }}
-                                </small>
-                            {% endif %}
-                        </div>
-                        </div>
-                    {% endfor %}
-                    <div class="col-md-6 offset-md-4">
-                        <button type="submit" class="btn btn-primary">
-                            {% if view_name == 'users:password_change_form' %}
-                                Изменить пароль
-                            {% elif view_name == 'users:password_reset_confirm' %}
-                                Восстановить
-                            {% elif view_name == 'posts:post_create' %}
-                                Добавить
-                            {% elif view_name == 'posts:post_edit' %}
-                                Сохранить
-                            {% endif %}
-                        </button>
-                    </div>
-                </form>
-            </div> <!-- card body -->
-        {% endwith %}
+              {% for field in form %}
+                <div class="form-group row my-3"
+                  {% if field.field.required %} 
+                    aria-required="true"
+                  {% else %}
+                    aria-required="false"
+                  {% endif %}
+                >
+                  <label for="{{ field.id_for_label }}">
+                    {{ field.label }}
+                      {% if field.field.required %}
+                        <span class="required text-danger">*</span>
+                      {% endif %}
+                  </label>
+                  <div>
+                    {{ field|addclass:'form-control' }}
+                    {% if field.help_text %}
+                      <small id="{{ field.id_for_label }}-help" class="form-text text-muted">
+                      {{ field.help_text|safe }}
+                      </small>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endfor %}
+
+              <div class="col-md-6 offset-md-4">
+                <button type="submit" class="btn btn-primary">
+                  {% if view_name == 'users:password_change_form' %}
+                    Изменить пароль
+                  {% elif view_name == 'users:password_reset_confirm' or view_name == 'users:password_reset_form' %}
+                    Восстановить
+                  {% elif view_name == 'posts:post_create' %}
+                    Добавить
+                  {% elif view_name == 'posts:post_edit' %}
+                    Сохранить
+                  {% endif %}
+                </button>
+              </div>
+            </form>
+        </div> <!-- card body -->
+      {% endwith %}
     </div>
 </div>
