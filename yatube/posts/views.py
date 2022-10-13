@@ -44,7 +44,8 @@ def post_detail(request, post_id):
 def post_create(request):
     form = PostForm(request.POST or None)
     if not form.is_valid():
-        return render(request, 'posts/create_or_update_post.html', {'form': form, })
+        return render(request, 'posts/create_or_update_post.html',
+                      {'form': form, })
     post = form.save(commit=False)
     post.author = request.user
     post.save()
@@ -59,11 +60,8 @@ def post_edit(request, post_id):
     form = PostForm(request.POST or None, instance=post)
     if not form.is_valid():
         return render(request,
-                        'posts/create_or_update_post.html',
-                        {'form': form,
-                        'post': post,
-                        })
+                      'posts/create_or_update_post.html',
+                      {'form': form,'post': post, })
     post = form.save(commit=False)
     post.save()
     return redirect('posts:post_detail', post_id=post.id)
-    
