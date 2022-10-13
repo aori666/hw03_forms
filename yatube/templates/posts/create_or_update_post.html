@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
+
   {% with request.resolver_match.view_name as view_name %}
     {% if view_name == 'posts:post_edit'%}
       Редактировать пост

@@ -2,13 +2,13 @@
 {% block title %}Профайл пользователя {{ author }}{% endblock %}
 
 {% block content %}
-    <div class="container py-5">        
-        <h1>Все посты пользователя {{ author }} </h1>
-        <h3>Всего постов: {{ post.author.post_author.count }} </h3>
-        {% for post in page_obj %}
-            {% include 'includes/include_for_post.html'%}
-        {% endfor %}
+        
+  <h1>Все посты пользователя {{ author }}</h1>
+  <h3>Всего постов: {{ post.author.post_author.count }} </h3>
+  {% for post in page_obj %}
+    {% include 'includes/include_for_post.html'%}
+  {% endfor %}
 
-        {% include 'posts/includes/paginator.html' %}
+  {% include 'posts/includes/paginator.html' %}
         
 {% endblock %}
