@@ -61,7 +61,7 @@ def post_edit(request, post_id):
     if not form.is_valid():
         return render(request,
                       'posts/create_or_update_post.html',
-                      {'form': form,'post': post,})
+                      {'form': form, 'post': post, })
     post = form.save(commit=False)
     post.save()
     return redirect('posts:post_detail', post_id=post.id)
