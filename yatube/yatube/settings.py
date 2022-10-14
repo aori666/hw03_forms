@@ -12,7 +12,12 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '[::1]',
+    'testserver',
+]
 
 # Настройки отправки писем для восстановления пароля через email
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
